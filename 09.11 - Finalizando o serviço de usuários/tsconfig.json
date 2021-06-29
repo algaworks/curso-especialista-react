@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true, // habilita arquivos de declaração
+    "outDir": "dist/", // após compilada
+    "lib": [
+      "es7",
+      "dom"
+    ],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "src/"
+  ]
+}
