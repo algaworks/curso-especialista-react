@@ -1,0 +1,26 @@
+#root > section.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-layout-header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+#PageLayout {
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 991px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    overflow: inherit !important;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.07);
+    z-index: 2;
+    height: 100%;
+  }
+  .ant-layout-sider .ant-layout-sider-children {
+    overflow: hidden auto;
+  }
+}
