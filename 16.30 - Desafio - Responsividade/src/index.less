@@ -1,0 +1,91 @@
+@import '~antd/dist/antd.less';
+
+@primary-color: #09f;
+@component-background: #f3f8fa;
+@layout-header-background: #f3f8fa;
+@body-background: #f3f8fa;
+@layout-body-background: #f3f8fa;
+@menu-inline-submenu-bg: #f3f8fa;
+@menu-item-active-bg: #f3f8fa;
+@popover-background: #f3f8fa;
+@border-color-base: rgba(39, 64, 96, 0.15);
+@border-color-split: rgba(39, 64, 96, 0.1);
+@table-header-bg: #f3f8fa;
+@text-color: #274060;
+@heading-color: #274060;
+@input-bg: #ffffff;
+@select-background: @input-bg;
+@select-dropdown-bg: @input-bg;
+@picker-bg: @input-bg;
+@picker-bg: @input-bg;
+@calendar-bg: @input-bg;
+@progress-remaining-color: rgba(39, 64, 96, 0.2);
+@layout-trigger-background: #274060;
+@layout-trigger-height: 120px;
+
+.ant-layout-sider-zero-width-trigger {
+  color: @text-color;
+  background-color: transparent;
+  top: -64px;
+  left: 0;
+  height: 64px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root > section.ant-layout {
+  min-height: 100vh;
+  max-width: 1190px;
+  margin: auto;
+}
+
+.ant-layout-header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  left: 0;
+  box-shadow: 0 0 20px -10px rgba(@text-color, 0.5);
+}
+
+#PageLayout {
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 991px) {
+  .ant-layout-sider {
+    position: fixed !important;
+    overflow: inherit !important;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.07);
+    z-index: 10;
+    height: 100%;
+  }
+  .ant-layout-sider .ant-layout-sider-children {
+    overflow: hidden auto;
+  }
+}
+
+@media screen and (max-width: 1190px) {
+  .ant-table-content {
+    overflow: auto;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  * {
+    color: #000 !important;
+    border-color: #ccc !important;
+    background-color: #fff !important;
+  }
+  .ant-layout {
+    margin: 0 !important;
+  }
+  @page {
+    size: landscape;
+  }
+}
