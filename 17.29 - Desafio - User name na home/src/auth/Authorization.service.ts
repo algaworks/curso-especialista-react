@@ -6,6 +6,14 @@ const authServer = axios.create({
   baseURL: 'http://localhost:8081',
 });
 
+authServer.interceptors.response.use(undefined, async (error) => {
+  if (error?.response?.status === 401) {
+    AuthService.imperativelySendToLogout();
+  }
+
+  return Promise.reject(error);
+});
+
 export interface OAuthAuthorizationTokenResponse {
   access_token: string;
   refresh_token: string;
@@ -18,8 +26,7 @@ export interface OAuthAuthorizationTokenResponse {
 export default class AuthService {
   public static imperativelySendToLogout() {
     window.localStorage.clear();
-    window.location.href =
-      'http://localhost:8081/logout?redirect=http://localhost:3000';
+    window.location.href = `http://localhost:8081/logout?redirect=http://localhost:3000`;
   }
 
   public static async getNewToken(config: {
