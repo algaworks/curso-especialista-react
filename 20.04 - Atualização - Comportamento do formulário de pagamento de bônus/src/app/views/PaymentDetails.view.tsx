@@ -1,8 +1,9 @@
 import { PrinterOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { Button, Card, Divider, Space, Tag } from 'antd';
+import { Button, Card, Divider, notification, Space, Tag } from 'antd';
 import moment from 'moment';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import useBreadcrumb from '../../core/hooks/useBreadcrumb';
 import usePageTitle from '../../core/hooks/usePageTitle';
 import usePayment from '../../core/hooks/usePayment';
 import DoubleConfirm from '../components/DoubleConfirm';
@@ -13,6 +14,7 @@ import PaymentPosts from '../features/PaymentPosts';
 
 export default function PaymentDetailsView() {
   usePageTitle('Detalhes do pagamento');
+  useBreadcrumb('Pagamento/Detalhes');
   const params = useParams<{ id: string }>();
   const history = useHistory();
 
@@ -23,6 +25,7 @@ export default function PaymentDetailsView() {
     fetchingPosts,
     paymentNotFound,
     approvingPayment,
+    approvePayment,
     payment,
     posts,
   } = usePayment();
@@ -67,18 +70,23 @@ export default function PaymentDetailsView() {
           <DoubleConfirm
             popConfirmTitle={'Deseja aprovar este agendamento?'}
             modalTitle={'Ação irreversível'}
-            disabled={!payment}
+            disabled={!payment || !payment.canBeApproved}
             modalContent={
               'Aprovar um agendamento de pagamento gera uma despesa que não pode ser removida do fluxo de caixa. Essa ação não poderá ser desfeita.'
             }
-            onConfirm={() => {
-              console.log('todo: implement payment approval');
+            onConfirm={async () => {
+              if (payment) {
+                await approvePayment(payment.id);
+                fetchPayment(payment.id);
+                notification.success({
+                  message: 'Pagamento aprovado com sucesso',
+                });
+              }
             }}
           >
             <Button
-              className='no-print'
               loading={approvingPayment}
-              disabled={!payment}
+              disabled={!payment || !payment.canBeApproved}
               icon={<CheckCircleOutlined />}
               type={'primary'}
               danger
