@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import ptBR from "date-fns/esm/locale/pt-BR";
 import { useCallback } from "react";
 import Skeleton from "react-loading-skeleton";
@@ -33,7 +34,7 @@ function SessionController(props: SessionControllerProps) {
       <SC.Description>
         Editor desde{" "}
         <strong>
-          {format(new Date(user.createdAt), "MMMM 'de' yyyy", {
+          {format(parseISO(user.createdAt), "MMMM 'de' yyyy", {
             locale: ptBR,
           })}
         </strong>

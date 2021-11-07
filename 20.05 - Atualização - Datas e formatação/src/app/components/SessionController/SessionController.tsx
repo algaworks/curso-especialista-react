@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import ptBR from "date-fns/esm/locale/pt-BR";
 import parseISO from "date-fns/parseISO";
 import { useCallback } from "react";

@@ -11,7 +11,8 @@ import {
   Tooltip,
 } from 'antd';
 import { User } from 'danielbonifacio-sdk';
-import { format } from 'date-fns';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 import { useEffect } from 'react';
 import useUsers from '../../core/hooks/useUsers';
 import {

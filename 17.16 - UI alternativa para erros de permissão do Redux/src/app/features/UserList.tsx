@@ -12,7 +12,8 @@ import {
   Row,
 } from 'antd';
 import { User } from 'danielbonifacio-sdk';
-import { format } from 'date-fns';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 import { useEffect, useState } from 'react';
 import useUsers from '../../core/hooks/useUsers';
 import {
@@ -122,7 +123,7 @@ export default function UserList() {
                     {user.email}
                   </Descriptions.Item>
                   <Descriptions.Item label={'Criação'}>
-                    {format(new Date(user.createdAt), 'dd/MM/yyyy')}
+                    {format(parseISO(user.createdAt), 'dd/MM/yyyy')}
                   </Descriptions.Item>
                   <Descriptions.Item label={'Perfil'}>
                     <Tag color={user.role === 'MANAGER' ? 'red' : 'blue'}>
@@ -198,7 +199,7 @@ export default function UserList() {
             },
             width: 120,
             render(createdAt: string) {
-              return format(new Date(createdAt), 'dd/MM/yyyy');
+              return format(parseISO(createdAt), 'dd/MM/yyyy');
             },
           },
           {
