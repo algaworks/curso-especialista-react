@@ -1,7 +1,8 @@
 import { mdiOpenInNew } from "@mdi/js";
 import Icon from "@mdi/react";
 import { Post } from "danielbonifacio-sdk";
-import { format } from "date-fns";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import parseISO from "date-fns/parseISO";
 import { useCallback, useState } from "react";
 import { useEffect } from "react";

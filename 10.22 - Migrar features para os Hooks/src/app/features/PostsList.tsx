@@ -1,7 +1,8 @@
 import { mdiOpenInNew } from "@mdi/js";
 import Icon from "@mdi/react";
 import { Post } from "danielbonifacio-sdk";
-import { format } from "date-fns";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useMemo } from "react";
@@ -80,7 +81,7 @@ export default function PostList() {
               fontFamily: '"Roboto mono", monospace',
             }}
           >
-            {format(new Date(props.value), "dd/MM/yyyy")}
+            {format(parseISO(props.value), "dd/MM/yyyy")}
           </div>
         ),
       },
@@ -96,7 +97,7 @@ export default function PostList() {
               fontFamily: '"Roboto mono", monospace',
             }}
           >
-            {format(new Date(props.value), "dd/MM/yyyy")}
+            {format(parseISO(props.value), "dd/MM/yyyy")}
           </div>
         ),
       },
