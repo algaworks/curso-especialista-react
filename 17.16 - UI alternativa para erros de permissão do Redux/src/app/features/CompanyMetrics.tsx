@@ -54,7 +54,7 @@ export default function CompanyMetrics() {
     },
     tooltip: {
       title(title) {
-        return format(new Date(title), 'MMMM yyyy', {
+        return format(parseISO(title), 'MMMM yyyy', {
           locale: ptBR,
         });
       },
