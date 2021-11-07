@@ -82,7 +82,7 @@ export default function UserList() {
             align: 'center',
             render(createdAt: string) {
               return format(
-                new Date(createdAt),
+                parseISO(createdAt),
                 'dd/MM/yyyy'
               );
             },

@@ -108,7 +108,7 @@ export default function UserList() {
                   </Descriptions.Item>
                   <Descriptions.Item label={'Criação'}>
                     {format(
-                      new Date(user.createdAt),
+                      parseISO(user.createdAt),
                       'dd/MM/yyyy'
                     )}
                   </Descriptions.Item>
@@ -211,7 +211,7 @@ export default function UserList() {
             width: 120,
             render(createdAt: string) {
               return format(
-                new Date(createdAt),
+                parseISO(createdAt),
                 'dd/MM/yyyy'
               );
             },
