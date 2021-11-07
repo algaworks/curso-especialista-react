@@ -12,7 +12,7 @@ function transformEditorMonthlyEaningsIntoChartJs(
   const data2: number[] = [];
 
   editorEarnings.forEach((earning) => {
-    const formattedMonth = format(new Date(earning.yearMonth), "MMMM", {
+    const formattedMonth = format(parseISO(earning.yearMonth), "MMMM", {
       locale: ptBR,
     });
     labels.push(formattedMonth);
