@@ -1,6 +1,7 @@
 import { Area, AreaConfig } from '@ant-design/charts';
 import { MetricService } from 'danielbonifacio-sdk';
-import { format } from 'date-fns';
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
 import ptBR from 'date-fns/esm/locale/pt-BR';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -64,7 +65,7 @@ export default function CompanyMetrics() {
     xAxis: {
       label: {
         formatter(item) {
-          return format(new Date(item), 'MM/yyyy');
+          return format(parseISO(item), 'MM/yyyy');
         },
       },
     },
