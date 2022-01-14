@@ -1,8 +1,8 @@
 import { MouseEvent } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function NavBar () {
-  const history = useHistory();
+  const navigate = useNavigate();
   
   function handleAnchorClick (e: MouseEvent<HTMLAnchorElement>) {
     e.preventDefault()
@@ -10,12 +10,12 @@ export default function NavBar () {
     const newRoute = e.currentTarget.getAttribute('href')
     
     if (newRoute)
-      history.push(newRoute)
+      navigate(newRoute)
   }
 
   return <nav>
     <ul>
-      <li><a onClick={handleAnchorClick} href="/">Home</a></li>
+      <li><a onClick={handleAnchorClick} href="/home">Home</a></li>
       <li><a onClick={handleAnchorClick} href="/contato">Contato</a></li>
     </ul>
   </nav>
