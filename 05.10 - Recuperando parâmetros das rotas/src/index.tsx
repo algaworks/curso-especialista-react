@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import Home from './views/Home.view';
 import NotFound404 from './views/NotFound404.view';
@@ -20,13 +20,13 @@ ReactDOM.render(
         </ul>
       </nav>
       <BrowserRouter>
-        <Switch>
-          <Route path={'/'} exact component={Home} />
-          <Route path={'/contato'} exact component={Contact} />
-          <Route path={'/usuario/:userId'} component={UserView} />
-          <Route path={'/sum/:a/:b'} component={CalcView} />
-          <Route component={NotFound404} />
-        </Switch>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/contato" element={<Contact />} />
+          <Route path={'/usuario/:userId'} element={<UserView />} />
+          <Route path={'/sum/:a/:b'} element={<CalcView />} />
+          <Route path="*" element={<NotFound404 />} />     
+        </Routes>
       </BrowserRouter>
     </div>
   </React.StrictMode>,
